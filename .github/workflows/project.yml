@@ -28,23 +28,23 @@ jobs:
           --health-timeout 5s
           --helth-retries 5
     steps:
-     -name: Проверяем репозиторий на изменения
-      uses: actions/checkout@v2
+     - name: Проверяем репозиторий на изменения
+       uses: actions/checkout@v2
       
-     -name: Устаовка python
-      uses: actions/setup-python@v5
-      with:
+     - name: Устаовка python
+       uses: actions/setup-python@v5
+       with:
         python-version: 3.12
 
-     -name: Установка зависимостей
-      run: pip install -r requirements.txt
+     - name: Установка зависимостей
+       run: pip install -r requirements.txt
 
-     -name: Линтинг кода
-      run: flake8 --ignore E501,F401 --exclude migrations
+     - name: Линтинг кода
+       run: flake8 --ignore E501,F401 --exclude migrations
 
-     -name: Тестироваие
-      run: python webpython/manage.py test
-      env:
+     - name: Тестироваие
+       run: python webpython/manage.py test
+       env:
         PG_NAME: ${{ env.PG_NAME }}
         PG_USER: ${{ env.PG_USER }}
         PG_PASSWORD: ${{ env.PG_PASSWORD }}
