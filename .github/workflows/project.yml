@@ -55,7 +55,7 @@ jobs:
     name: Доствка изменений
     needs: testing
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - name: Запуск обновления
         uses: appleboy/ssh-action@master
         with:
